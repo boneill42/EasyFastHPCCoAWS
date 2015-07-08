@@ -1,4 +1,5 @@
 {
+    "Description" : "20150708 added: Cassandra install",
     "Description" : "20150604 added: Make s3 bucket that contains all scripts a parameter",
     "Description" : "20150604 added: AMI should be selected automatically depending on region.",
     "Description" : "20150609 added: Support for ROXIE so ROXIEs are created on different instances than those having THOR slave nodes.",
@@ -449,6 +450,7 @@
                         "Fn::Join" : ["\n",
                             ["#!/bin/bash", 
                                 "exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1",
+                                "sed -i '/Defaults    requiretty/d' /etc/sudoers",
                                 "yum -y clean all\n",
                                 "yum-config-manager --enable epel\n",
                                 "yum -y update --security\n",
@@ -467,9 +469,12 @@
                                 "chown ec2-user:ec2-user /home/ec2-user/*",
                                 "chmod 755 /home/ec2-user/*.sh",
                                 "chmod 755 /home/ec2-user/*.pl",
+
+                                "echo starting cassandra install",
                                 "cp /home/ec2-user/datastax.repo /etc/yum.repos.d/",
                                 "yum -y install cassandra21",
- 
+                                "echo cassandra install complete",
+
                                 "echo starting setup_zz_zNxlarge_disks.pl",
                                 "~ec2-user/setup_zz_zNxlarge_disks.pl",
                                 "echo setup_zz_zNxlarge_disks.pl has completed",
@@ -648,6 +653,7 @@
                         "Fn::Join" : ["\n",
                             ["#!/bin/bash", 
                                 "exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1",
+                                "sed -i '/Defaults    requiretty/d' /etc/sudoers",
                                 "yum -y clean all\n",
                                 "yum-config-manager --enable epel\n",
                                 "yum -y update --security\n",
@@ -666,6 +672,11 @@
                                 "chown ec2-user:ec2-user /home/ec2-user/*",
                                 "chmod 755 /home/ec2-user/*.sh",
                                 "chmod 755 /home/ec2-user/*.pl",
+
+                                "echo starting cassandra install",
+                                "cp /home/ec2-user/datastax.repo /etc/yum.repos.d/",
+                                "yum -y install cassandra21",
+                                "echo cassandra install complete",
  
                                 "echo starting setup_zz_zNxlarge_disks.pl",
                                 "~ec2-user/setup_zz_zNxlarge_disks.pl",
@@ -876,6 +887,7 @@
                         "Fn::Join" : ["\n",
                             ["#!/bin/bash", 
                                 "exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1",
+                                "sed -i '/Defaults    requiretty/d' /etc/sudoers",
                                 "yum -y clean all\n",
                                 "yum-config-manager --enable epel\n",
                                 "yum -y update --security\n",
@@ -894,6 +906,11 @@
                                 "chown ec2-user:ec2-user /home/ec2-user/*",
                                 "chmod 755 /home/ec2-user/*.sh",
                                 "chmod 755 /home/ec2-user/*.pl",
+
+                                "echo starting cassandra install",
+                                "cp /home/ec2-user/datastax.repo /etc/yum.repos.d/",
+                                "yum -y install cassandra21",
+                                "echo cassandra install complete",
 
                                 "echo starting setup_zz_zNxlarge_disks.pl",
                                 "/home/ec2-user/setup_zz_zNxlarge_disks.pl",
