@@ -467,6 +467,8 @@
                                 "chown ec2-user:ec2-user /home/ec2-user/*",
                                 "chmod 755 /home/ec2-user/*.sh",
                                 "chmod 755 /home/ec2-user/*.pl",
+                                "cp /user/ec2-user/datastax.repo /etc/yum.repos.d/",
+                                "yum -y install cassandra21",
  
                                 "echo starting setup_zz_zNxlarge_disks.pl",
                                 "~ec2-user/setup_zz_zNxlarge_disks.pl",
