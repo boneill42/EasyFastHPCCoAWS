@@ -95,13 +95,13 @@ partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 # will spread data evenly across them, subject to the granularity of
 # the configured compaction strategy.
 # If not set, the default directory is $CASSANDRA_HOME/data/data.
-# data_file_directories:
-#     - /var/lib/cassandra/data
+data_file_directories:
+     - /var/lib/cassandra/data
 
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.
 # If not set, the default directory is $CASSANDRA_HOME/data/commitlog.
-# commitlog_directory: /var/lib/cassandra/commitlog
+commitlog_directory: /var/lib/cassandra/commitlog
 
 # policy for data disk failures:
 # die: shut down gossip and Thrift and kill the JVM for any fs errors or
@@ -364,7 +364,7 @@ ssl_storage_port: 7001
 # address associated with the hostname (it might not be).
 #
 # Setting listen_address to 0.0.0.0 is always wrong.
-listen_address: localhost
+listen_address: $private_ip
 # listen_interface: eth0
 
 # Address to broadcast to other Cassandra nodes
