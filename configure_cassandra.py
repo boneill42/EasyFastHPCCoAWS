@@ -8,6 +8,7 @@ config = io.open(sys.argv[1], 'w')
 for line in io.open('/home/ec2-user/cassandra.yaml.template', 'r'):
     line = line.replace('$cluster_name', sys.argv[2])
     line = line.replace('$cassandra_seeds', sys.argv[3])
+    line = line.replace('$private_ip', sys.argv[4])
     config.write(line)
 
 # Close the files
